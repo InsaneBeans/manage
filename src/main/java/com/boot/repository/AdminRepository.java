@@ -7,10 +7,18 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.boot.domain.Admin;
 
+/**
+ * 管理员查询接口
+ * 
+ * @author kangkang
+ *
+ */
 @Transactional
-public interface AdminRepository extends PagingAndSortingRepository<Admin,String>{
-	
-	@Query("select id from Admin ad where ad.ad_id = ?1")
-	public String catchAdminId(String adid);
+public interface AdminRepository extends PagingAndSortingRepository<Admin, Long> {
+
+	@Query("select id from Admin ad where ad.adName = ?1")
+	public String catchAdminId(String adName);
+
+	public Admin findByAdName(String adName);
 
 }

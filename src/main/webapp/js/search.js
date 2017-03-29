@@ -6,8 +6,8 @@
 	    var provinceModel = Ext.define('provinceModel',{
 	    	extend:'Ext.data.Model',
 	    	fields: [
-	                { name: 'provinceid', type: 'string' },
-	  	            { name: 'province', type: 'string' },
+	                { name: 'provId', type: 'string' },
+	  	            { name: 'provName', type: 'string' },
 	        ]
 	    });
 	  
@@ -15,7 +15,7 @@
 	    var cityModel = Ext.define('cityModel',{
 	    	extend:'Ext.data.Model',
 	    	fields: [
-                    { name: 'provinceid', type: 'string' },
+                    { name: 'province', type: 'string' },
 	                { name: 'cityid', type: 'string' },
 	  	            { name: 'city', type: 'string' },
 	        ]
@@ -25,8 +25,8 @@
 	    var nationModel = Ext.define('nationModel',{
 	    	extend:'Ext.data.Model',
 	    	fields: [
-	                { name: 'u_mzid', type: 'string' },
-	  	            { name: 'u_minzu', type: 'string' },
+	                { name: 'minzuId', type: 'string' },
+	  	            { name: 'minzuName', type: 'string' },
 	        ]
 	    });
 
@@ -34,13 +34,13 @@
 		  var userModel = Ext.define('userModel',{
 			    extend:'Ext.data.Model',
 	 	        fields: [
-					{ name: 'id',   type: 'string' },
+					{ name: 'id',   type: 'int' },
 		            { name: 'uname',   type: 'string' },
 		            { name: 'uuid',    type: 'string' },
 		            { name: 'usex',    type: 'string' },
 		            { name: 'udate',   type: 'string' },
-		            { name: 'uminzu',  type: 'string' },
-		            { name: 'uarea',   type: 'string' },
+		            { name: 'unation',  type: 'string' },
+		            { name: 'uaddress',   type: 'string' },
 		            { name: 'uextra',   type: 'string' },
 		        ],	
 		    });

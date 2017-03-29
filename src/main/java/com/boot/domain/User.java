@@ -1,105 +1,114 @@
 package com.boot.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * @category 用户实体类
- * @version 用户表的主键设置为id,自增整形变量，从1开始
+ * 用户实体类。用户表的主键设置为id,自增整形变量，从1开始
+ * 
+ * @author kangkang
  */
 @Entity
 @Table(name = "u_user")
-
 public class User {
-	
+
 	@Id
 	@GeneratedValue
-	private String id;//主键自增
-	
-	@Column(name="uuid")
-	private String uuid;     //身份证号码(19位)
-	
-	@Column(name="uname")
-	private String uname;   //姓名
-	
-	@Column(name="usex")
-	private String usex;    //性别
-	
-	@Column(name="udate")
-	private String udate;   //出生日期
-	
-	@Column(name="uminzu")
-	private String uminzu;  //民族
-	
-	@Column(name="uarea")
-	private String uarea;
-	
-	@Column(name="uextra")
+	private long id;// 主键自增
+	/**
+	 * 身份证号码18位活着15位
+	 */
+	private String uuid;
+	/**
+	 * 姓名
+	 */
+	private String uname; // 姓名
+	/**
+	 * 性别
+	 */
+	private String usex; // 性别
+	/**
+	 * 出生日期
+	 */
+	private String udate;
+	/**
+	 * 民族
+	 */
+	@OneToOne
+	private Nation unation;
+	/**
+	 * 地址
+	 */
+	private String uaddress;
+	/**
+	 * 其他
+	 */
 	private String uextra;
-	
-	public String getId(){
+
+	public long getId() {
 		return id;
 	}
-	public void setId( String id){
+
+	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public void setUuid(String uuid){
-		this.uuid = uuid;
-	}
-	
-	public String getUuid(){
+
+	public String getUuid() {
 		return uuid;
 	}
-	
-	public void setUname(String name){
-		this.uname = name;
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
-	
-	public String getUname(){
+
+	public String getUname() {
 		return uname;
 	}
 
-	public void setUsex(String usex){
-		this.usex = usex;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
-	
-	public String getUsex(){
+
+	public String getUsex() {
 		return usex;
 	}
 
-	public void setUminzu(String uminzu){
-		this.uminzu = uminzu;
-	}
-	
-	public String getUminzu(){
-		return uminzu;
+	public void setUsex(String usex) {
+		this.usex = usex;
 	}
 
-	public void setUdate(String udate){
-		this.udate = udate;
-	}
-	
-	public String getUdate(){
+	public String getUdate() {
 		return udate;
 	}
-	
-	public void setUextra(String uextra){
-		this.uextra = uextra;
+
+	public void setUdate(String udate) {
+		this.udate = udate;
 	}
-	
-	public String getUextra(){
+
+	public Nation getUnation() {
+		return unation;
+	}
+
+	public void setUnation(Nation unation) {
+		this.unation = unation;
+	}
+
+	public String getUaddress() {
+		return uaddress;
+	}
+
+	public void setUaddress(String uaddress) {
+		this.uaddress = uaddress;
+	}
+
+	public String getUextra() {
 		return uextra;
 	}
 
-	public String getUarea() {
-		return uarea;
-	}
-	
-	public void setUarea(String uarea) {
-		this.uarea = uarea;
+	public void setUextra(String uextra) {
+		this.uextra = uextra;
 	}
 }

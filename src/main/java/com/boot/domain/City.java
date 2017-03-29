@@ -3,55 +3,69 @@ package com.boot.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- *@category 城市实体类
+ * 城市实体类
+ * 
+ * @author kangkang
  */
 @Entity
-@Table(name="cities")
+@Table(name = "u_city")
 public class City {
-	
+
+	/**
+	 * 主键id
+	 */
 	@Id
 	@GeneratedValue
-	private String id;
-	
-	private String cityid;
-	
-	private String city;
-	
-	private String provinceid;
+	private long id;
 
-	public String getId(){
+	/**
+	 * 城市id
+	 */
+	private String cityId;
+	/**
+	 * 城市名称
+	 */
+	private String cityName;
+	/**
+	 * 城市所在的省份
+	 */
+	@ManyToOne
+	private Province province;
+
+	public long getId() {
 		return id;
 	}
-	
-	public void setID(String id){
+
+	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public String getCityid() {
-		return cityid;
+
+	public String getCityId() {
+		return cityId;
 	}
 
-	public void setCityid(String cityid) {
-		this.cityid = cityid;
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
 	}
 
-	public String getCity() {
-		return city;
+	public String getCityName() {
+		return cityName;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 
-	public String getProvinceid() {
-		return provinceid;
+	public Province getProvince() {
+		return province;
 	}
 
-	public void setProvinceid(String provinceid) {
-		this.provinceid = provinceid;
+	public void setProvince(Province province) {
+		this.province = province;
 	}
 
 }

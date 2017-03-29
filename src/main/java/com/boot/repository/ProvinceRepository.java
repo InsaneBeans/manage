@@ -6,9 +6,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.boot.domain.Province;
 
+/**
+ * 省份查询接口
+ * 
+ * @author kangkang
+ *
+ */
 @Transactional
-public interface ProvinceRepository extends CrudRepository<Province,String>{
+public interface ProvinceRepository extends CrudRepository<Province, Long>{
 
-	@Query("select p from Province p where p.province = ?1")
+	@Query("select p from Province p where p.provName = ?1")
 	public Province catchProvinceId(String provincename);
 }

@@ -6,44 +6,52 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *@category 省份实体类
+ * 省份实体类
+ * 
+ * @author kangkang
  */
 @Entity
-@Table(name="provinces")
+@Table(name = "u_province")
 public class Province {
-	
+
+	/**
+	 * 主键
+	 */
 	@Id
 	@GeneratedValue
-	private String id;
-	
-	private String provinceid;
-	
-	private String province;
-	
+	private long id;
 
-	public String getId(){
+	/**
+	 * 省份id
+	 */
+	private String provId;
+	/**
+	 * 省份名称
+	 */
+	private String provName;
+
+	public long getId() {
 		return id;
 	}
-	
-	public void setId(String id){
+
+	public void setId(long id) {
 		this.id = id;
 	}
-	
 
-	public String getProvinceid() {
-		return provinceid;
+	public String getProvId() {
+		return provId;
 	}
 
-	public void setProvinceid(String provinceid) {
-		this.provinceid = provinceid;
+	public void setProvId(String provId) {
+		this.provId = provId;
 	}
 
-	public String getProvince() {
-		return province;
+	public String getProvName() {
+		return provName;
 	}
 
-	public void setProvince(String province) {
-		this.province = province;
+	public void setProvName(String provName) {
+		this.provName = provName;
 	}
 
 }

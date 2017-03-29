@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @category 程序运行入口
+ * 程序运行入口
+ * 
+ * @author kangkang
  */
 @Configuration
 @EnableAutoConfiguration

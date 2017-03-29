@@ -1,30 +1,56 @@
 package com.boot.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *@category 民族实体类
+ * 民族实体类
+ * 
+ * @author kangkang
  */
 @Entity
-@Table(name="nation")
+@Table(name = "u_nation")
 public class Nation {
-	
+
+	/**
+	 * 主键
+	 */
 	@Id
-	private String u_mzid;
-	
-	private String u_minzu;
-	
-	public String getU_mzid(){
-		return u_mzid;
+	@GeneratedValue
+	private long id;
+	/**
+	 * 民族id
+	 */
+	private String mingzuId;
+	/**
+	 * 民族名称
+	 */
+	private String minzuName;
+
+	public long getId() {
+		return id;
 	}
-	
-	public String getU_minzu(){
-		return u_minzu;
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	
-	
-	
+
+	public String getMingzuId() {
+		return mingzuId;
+	}
+
+	public void setMingzuId(String mingzuId) {
+		this.mingzuId = mingzuId;
+	}
+
+	public String getMinzuName() {
+		return minzuName;
+	}
+
+	public void setMinzuName(String minzuName) {
+		this.minzuName = minzuName;
+	}
 
 }

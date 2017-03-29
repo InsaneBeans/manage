@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% if(session.getAttribute("adminid")==null||session.getAttribute("adminid")=="") {
-	 response.sendRedirect("/");
-   }
-%>
+<%-- <% if(session.getAttribute("adminid")==null||session.getAttribute("adminid")=="") { --%>
+<!--  	 response.sendRedirect("/"); -->
+<!--     } -->
+<!--  %>  -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -209,11 +209,11 @@ Ext.onReady(function() {
 					blankText : '民族不能为空',
 		            store:nationStore,
 		            emptyText : '选择民族',
-		            name : 'uminzu',
+		            name : 'unation',
 		            editable:false,
 		            allowBlank : true,
-		            displayField: 'u_minzu',
-		           valueField: 'u_minzu',
+		            displayField: 'minzuName',
+		           valueField: 'minzuName',
 				}, {
 					border:false,
 					anchor:'94%',
@@ -227,12 +227,12 @@ Ext.onReady(function() {
 					      columnWidth:.6,
 					      blankText : '省份不能为空',
 					      emptyText : '选择省份',
-					      name:'uarea',
-					      id:'uarea',
+					      name:'uaddress',
+					      id:'uaddress',
 					      editable:false,
 					      allowBlank : false,
-					      valueField : 'province',
-					      displayField:'province',
+					      valueField : 'provName',
+					      displayField:'provName',
 				          listeners:{
 				    		   select:function(combo,record,index){
 				    			   try{
@@ -261,8 +261,8 @@ Ext.onReady(function() {
 					    selectOnFocus:true,
 					    editable : false,
 				    	allowBlank : false,
-				    	valueField:'city',
-					    displayField:'city',
+				    	valueField:'cityName',
+					    displayField:'cityName',
 				}]
 				}, {
 		            xtype: 'textarea',

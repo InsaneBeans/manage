@@ -77,7 +77,7 @@ public class UserController {
 	 */
 	@RequestMapping("/user/city")
 	public Iterable<City> cityList(String provincename){
-			String provinceid = provincerepository.catchProvinceId(provincename).getProvinceid();
+			String provinceid = provincerepository.catchProvinceId(provincename).getProvId();
 			return cityrepository.findCity(provinceid);
 	}
 	
@@ -116,11 +116,11 @@ public class UserController {
 		} else {
 			mdfuser.setUuid(user.getUuid());
 			mdfuser.setUname(user.getUname());
-			mdfuser.setUminzu(user.getUminzu());
+			mdfuser.setUnation(user.getUnation());
 			mdfuser.setUsex(user.getUsex());
 			mdfuser.setUdate(user.getUdate());
 			mdfuser.setUextra(user.getUextra());
-			mdfuser.setUarea(user.getUarea());
+			mdfuser.setUaddress(user.getUaddress());
 			userrepository.save(mdfuser);
 			json = "{\"success\":true,\"msg\":\"修改成功!\"}";
 	   }
@@ -187,7 +187,7 @@ public class UserController {
 	 */
 	@RequestMapping("/user/search")
 	public Iterable<User> searchUser(User user,HttpServletResponse response) {
-		String sql = "select u from user u where ";
+//		String id = user.getId();
 		return userrepository.findAll();
 	}
 	

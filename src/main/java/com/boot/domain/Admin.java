@@ -5,41 +5,57 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
- * @category 管理员实体类，包含管理员ID和密码两个参数。
+ * 管理员实体类，包含管理员ID和密码两个参数。
+ * 
+ * @author kangkang
  *
  */
 @Entity
 @Table(name = "u_admin")
 public class Admin {
-	
+
+	/**
+	 * 自增主键
+	 */
 	@Id
 	@GeneratedValue
-	private String id;
-	private String ad_id;
-	private String ad_psw;
+	private long id;
+	/**
+	 * 管理员名称
+	 */
+	@JsonProperty("adname")
+	private String adName;
+	/**
+	 * 管理员密码
+	 */
+	@JsonProperty("adpsw")
+	private String adPsw;
 
-	public void setId(String id){
-		this.id = id;
-	}
-	
-	public String getId(){
+	public long getId() {
 		return id;
 	}
-	
-	public void setAd_id(String ad_id){
-		this.ad_id = ad_id;
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	
-	public String getAd_id(){
-		return ad_id;
+
+	public String getAdName() {
+		return adName;
 	}
-	
-    public void setAd_psw(String ad_psw){
-		this.ad_psw = ad_psw;
+
+	public void setAdName(String adName) {
+		this.adName = adName;
 	}
-	
-	public String getAd_psw(){
-		return ad_psw;
+
+	public String getAdPsw() {
+		return adPsw;
 	}
+
+	public void setAdPsw(String adPsw) {
+		this.adPsw = adPsw;
+	}
+
 }

@@ -4,6 +4,12 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.boot.domain.Nation;
 
-public interface NationRepository extends PagingAndSortingRepository<Nation,String> {
+/**
+ * 民族查询接口
+ * 
+ * @author kangkang
+ *
+ */
+public interface NationRepository extends PagingAndSortingRepository<Nation, Long> {
 
 }
