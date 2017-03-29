@@ -1,0 +1,86 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css"></link>
+  <script type="text/javascript"  src="extjs/ext-all.js"></script>
+  <script type="text/javascript" src="extjs/ext-lang-zh_CN.js"></script>
+<style type="text/css">
+.divd{
+   position: relative;
+   margin:200px auto auto auto;
+}
+.dive{
+   position:relative;
+   margin:15px auto auto auto;
+}
+</style>
+  <title>管理员登录</title>
+</head>
+<body>
+<script>
+Ext.onReady(function(){
+	var adminform = Ext.create('Ext.form.Panel', {
+		title : '管理员登录',
+		renderTo : 'adminloginform',
+		id:'adminform',
+		width : 340,
+		height: 150,
+		frame:true,
+		top: 50,
+		labelAlign:"right",
+		monitorValid:true,
+		baseParams : {create : true },  	
+    	items :[{
+    		 xtype:'textfield',
+    		 fieldLabel: '管理员ID',
+    		 name:'ad_id',
+    		 minLength: 2,
+    		 maxLength: 15,
+    	     allowBlank: false
+    	},{
+    		xtype:'textfield',
+    		fieldLabel: '管理密码',
+   		    minLength: 2,
+   		    name:'ad_psw',
+   		    maxLength: 15,
+   		    inputType: 'password', 
+   	        allowBlank: false
+    	}],
+  
+		buttons : [{
+			text : '登录',
+			formBind: true,
+			disabled: true,
+			handler : function() {
+				var form =this.up().up().getForm();
+				if (form.isValid()) {
+					form.submit({
+						url : '/login',
+						waitTitle : '请稍等' ,  
+		                waitMsg: '正在登录',  
+						success : function(form, action) {
+						     	window.location.href="list.jsp";
+						},
+						failure : function(form, action) {
+							    Ext.Msg.alert('失败', action.result?action.result.msg:'登录失败，请检查系统设置！');
+						},
+						params:{
+							admin:form
+						}
+					});
+				}
+				
+			}
+		},{
+			text : '重置',
+			handler :function(){
+				Ext.getCmp('adminform').getForm().reset();	//清空方法。
+			}
+		}]
+	});
+	});
+</script>
+<div id="adminloginform" align="center" class="divd"></div>
+<div class="dive"><div align="center" top="15px">请联系管理员获取登录ID和密码:huhong@bonc.com.cn</div></div>
+</body>
+</html>

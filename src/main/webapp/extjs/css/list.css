@@ -1,0 +1,19 @@
+.add{
+	background-image: url(images/user_add.png) !important;
+}
+.delete{
+	background-image: url(images/user_delete.png) !important;
+}
+
+.refresh{
+	background-image: url(../extjs/resources/ext-theme-classic/images/grid/refresh.gif) !important;
+}
+.modify{
+	background-image: url(images/modify.gif) !important;
+}
+.help{
+	background-image: url(images/help.png) !important;
+}
+.search{
+	background-image: url(images/magnify.png) !important;
+}

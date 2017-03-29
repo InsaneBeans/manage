@@ -1,0 +1,16 @@
+.dive{
+   height:25px;
+   position:relative;
+   width:1000px;
+   margin:9px auto auto auto;
+}
+.searchdiv{
+
+   position:relative;
+   width:1000px;
+   margin:2px auto 2px auto;
+}
+.aa{
+    text-decoration:none;
+    color:blue;
+}
