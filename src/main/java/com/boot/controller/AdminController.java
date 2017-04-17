@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.boot.controller.param.LoginResponse;
 import com.boot.domain.Admin;
 import com.boot.repository.AdminRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @category 管理员登录实现类
@@ -21,39 +23,39 @@ public class AdminController {
 
 	@Autowired
 	private AdminRepository adrepository;
-	
+
 	/**
-	 * @category 管理员登录实现方法
+	 * 管理员登录Http接口
 	 */
 	@RequestMapping("/login")
-	public void adminLogin(@RequestBody Admin admin,HttpServletResponse response,HttpSession session) throws IOException{
-		
-			String json = null;
-			String id = adrepository.catchAdminId(admin.getAdName());
-			if(id==null){
-	            json = "{\"success\":false,\"msg\":\"不存在此管理员！\"}";
+	public void adminLogin(@RequestBody Admin admin, HttpServletResponse response, HttpSession session)
+			throws IOException {
+
+		LoginResponse resInfo = null;
+		Admin resAd = adrepository.findByAdminName(admin.getAdName());
+		if (resAd == null) {
+			resInfo = new LoginResponse(false, "不存在此管理员！");
+		} else {
+			if (!resAd.getAdPsw().equals(admin.getAdPsw())) {
+				resInfo = new LoginResponse(false, "密码错误！");
 			} else {
-				 Admin judgeadmin = adrepository.findByAdName(id);
-				 if (!judgeadmin.getAdPsw().equals(admin.getAdPsw())){
-					json = "{\"success\":false,\"msg\":\"密码错误！\"}";
-				} else {
-					session.setAttribute("adminid",judgeadmin.getAdName());
-					json = "{\"success\":true,\"msg\":\"登录成功！\"}";
-				}
+				session.setAttribute("adminid", resAd.getAdName());
+				resInfo = new LoginResponse(false, "登录成功！");
 			}
-		  jsonResponse(json,response);
+		}
+		jsonResponse(resInfo, response);
 	}
-	
+
 	/**
-	 * @category 响应json数据封装
+	 * 响应json数据封装
 	 */
-	public void jsonResponse(String json, HttpServletResponse response) {
-			try {
-				response.getWriter().write(json);
-				response.getWriter().flush();
-				response.getWriter().close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	public void jsonResponse(LoginResponse json, HttpServletResponse response) {
+		try {
+			response.getWriter().write(new ObjectMapper().writeValueAsString(json));
+			response.getWriter().flush();
+			response.getWriter().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

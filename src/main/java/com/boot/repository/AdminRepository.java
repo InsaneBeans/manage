@@ -18,7 +18,11 @@ public interface AdminRepository extends PagingAndSortingRepository<Admin, Long>
 
 	@Query("select id from Admin ad where ad.adName = ?1")
 	public String catchAdminId(String adName);
-
-	public Admin findByAdName(String adName);
+	
+	@Query("select ad from Admin ad where ad.adName = ?1")
+	public Admin findByAdminName(String adName);
+	
+	@Query("select ad from Admin ad where ad.id = ?1")
+	public Admin findAdminId(long id);
 
 }
